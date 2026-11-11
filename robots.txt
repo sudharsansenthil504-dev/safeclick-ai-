@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sudharsansenthil504-dev.github.io/safeclick-ai-/sitemap.xml
