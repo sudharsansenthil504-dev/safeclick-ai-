@@ -16,6 +16,8 @@ Live website: https://sudharsansenthil504-dev.github.io/safeclick-ai-/
 
 ## Privacy approach
 
+- [Read the SafeClick AI Privacy Policy](https://sudharsansenthil504-dev.github.io/safeclick-ai-/privacy.html)
+
 - Checker analysis runs locally in the user's browser.
 - The message, job-offer text and URL entered into the checkers are not sent to a SafeClick AI server.
 - The site does not ask users to create an account or submit a phone number.
