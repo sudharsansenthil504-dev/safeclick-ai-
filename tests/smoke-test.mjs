@@ -129,8 +129,8 @@ const localizationCoverage = vm.runInContext(`(() => {
   });
 })()`, context);
 for (const coverage of localizationCoverage) {
-  assert.deepEqual(coverage.missingText, [], `${coverage.code} should translate every visible UI label and message`);
-  assert.deepEqual(coverage.missingPlaceholders, [], `${coverage.code} should translate every input placeholder`);
+  assert.equal(coverage.missingText.length, 0, `${coverage.code} should translate every visible UI label and message: ${coverage.missingText.join(", ")}`);
+  assert.equal(coverage.missingPlaceholders.length, 0, `${coverage.code} should translate every input placeholder: ${coverage.missingPlaceholders.join(", ")}`);
 }
 
 assert.match(html, /@media\s*\(\s*prefers-reduced-motion\s*:\s*reduce\s*\)/, "Reduced-motion preference should disable smooth scrolling");
