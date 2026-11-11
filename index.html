@@ -61,9 +61,21 @@ function renderResult(el,level,items,extra=""){
  const note=document.createElement("p");const strong=document.createElement("strong");strong.textContent=w.remember;note.append(strong,document.createTextNode(" "+w.disclaimer));
  el.replaceChildren(heading,summary,list,note);el.classList.add("show");
 }
+// Additional native-script clues for common Indian-language scam wording.
+// These are heuristic clues, not language detection or proof of fraud.
+const regionalPatterns=[
+ {re:/(ஓடிபி|ரகசிய எண்|கடவுச்சொல்|ओटीपी|पासवर्ड|गुप्त कोड|ఓటీపీ|రహస్య కోడ్|ಗುಪ್ತ ಕೋಡ್|ಪಾಸ್‌ವರ್ಡ್|ഒടിപി|രഹസ്യ കോഡ്|পাসওয়ার্ড|ওটিপি|गुप्त कोड|પાસવર્ડ|ਗੁਪਤ ਕੋਡ|خفیہ کوڈ|او ٹی پی|پاس ورڈ)/i,why:"The message asks for sensitive credentials or refers to them."},
+ {re:/(பணம்|கட்டணம்|செலுத்து|டெபாசிட்|पैसे|भुगतान|शुल्क|जमा करें|డబ్బు|చెల్లింపు|రుసుము|ಹಣ|ಪಾವತಿ|ಶುಲ್ಕ|പണം|പേയ്മെന്റ്|ഫീസ്|টাকা|পেমেন্ট|ফি|पैसे भरा|शुल्क|પૈસા|ચુકવણી|ફી|ਪੈਸੇ|ਭੁਗਤਾਨ|فیس|رقم|ادائیگی)/i,why:"It may be asking for a payment or fee."},
+ {re:/(கணக்கு|வங்கி|சிம்).{0,35}(முடக்கு|தடை|நிறுத்தம்)|(खाता|बैंक|सिम).{0,35}(ब्लॉक|बंद|निलंबित)|(ఖాతా|బ్యాంక్|సిమ్).{0,35}(బ్లాక్|నిలిపి|మూసి)|(ಖಾತೆ|ಬ್ಯಾಂಕ್|ಸಿಮ್).{0,35}(ಬ್ಲಾಕ್|ನಿಲ್ಲಿ|ಮುಚ್ಚಿ)|(അക്കൗണ്ട്|ബാങ്ക്|സിം).{0,35}(ബ്ലോക്ക്|നിർത്തി|അടയ്ക്കി)|(অ্যাকাউন্ট|ব্যাংক|সিম).{0,35}(ব্লক|বন্ধ)|(खाते|बँक|सिम).{0,35}(ब्लॉक|बंद)|(ખાતું|બેંક|સિમ).{0,35}(બ્લોક|બંધ)|(ਖਾਤਾ|ਬੈਂਕ|ਸਿਮ).{0,35}(ਬਲੌਕ|ਬੰਦ)|(اکاؤنٹ|بینک|سم).{0,35}(بلاک|بند)/i,why:"It uses an account-blocking or suspension warning."},
+ {re:/(உடனே|அவசரம்|இப்போதே|तुरंत|अभी|जल्दी|వెంటనే|అత్యవసరం|ತಕ್ಷಣ|ತುರ್ತು|ഉടൻ|അടിയന്തിരം|এখনই|জরুরি|तात्काळ|लगेच|તરત|તાત્કાલિક|ਤੁਰੰਤ|ਹੁਣੇ|فوراً|فوری|ابھی)/i,why:"It creates pressure to act quickly."},
+ {re:/(பரிசு|வெற்றி|லாட்டரி|வெகுமதி|इनाम|लॉटरी|पुरस्कार|जीत|బహుమతి|లాటరీ|విజయం|ಬಹುಮಾನ|ಲಾಟರಿ|സമ്മാനം|ലോട്ടറി|পুরস্কার|লটারি|बक्षीस|लॉटरी|ઇનામ|લોટરી|ਇਨਾਮ|ਲਾਟਰੀ|انعام|لاٹری)/i,why:"It promises a prize, reward or unexpected benefit."},
+ {re:/(சரிபார்|புதுப்பி|உறுதிப்படுத்து|கேஒய்சி|सत्यापित|अपडेट|केवाईसी|ధృవీకరించు|నవీకరించు|కేవైసీ|ಪರಿಶೀಲಿಸಿ|ನವೀಕರಿಸಿ|ಕೆವೈಸಿ|സ്ഥിരീകരിക്കുക|അപ്ഡേറ്റ്|കെവൈസി|যাচাই|আপডেট|কেওয়াইসি|पडताळणी|अपडेट|केवायसी|ચકાસો|અપડેટ|કેવાયસી|ਤਸਦੀਕ|ਅਪਡੇਟ|کے وائی سی|تصدیق|اپ ڈیٹ)/i,why:"It asks you to verify or update account details."}
+];
 function checkText(input,el,jobMode){
  const text=input.trim();if(!text){alert("Please paste some text first.");return}
  const found=patterns.filter(p=>p.re.test(text)).map(p=>p.why);
+ const regionalFound=regionalPatterns.filter(p=>p.re.test(text)).map(p=>p.why);
+ found.push(...regionalFound);
  if(jobMode){
   const jobPatterns=[
    {re:/\b(registration|processing|training|security|interview) fee\b/i,why:"A fee is mentioned in connection with recruitment."},
