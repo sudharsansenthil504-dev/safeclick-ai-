@@ -215,9 +215,9 @@ renderResult=function renderResult(el,level,items,extra=""){
  const heading=document.createElement("h3");
  heading.append(document.createTextNode(w.level+" "));
  const risk=document.createElement("span");risk.className="risk "+cls;risk.textContent=shown;heading.append(risk);
- const summary=document.createElement("p");summary.textContent=extra;
+ const summary=document.createElement("p");summary.textContent=extra==="Few common warning signs were found. Still verify the sender or employer independently."?w.few:extra==="Review each warning sign before replying, paying or sharing information."?w.review:extra;
  const list=document.createElement("ul");
- items.forEach(item=>{const li=document.createElement("li");li.textContent=String(item);list.append(li)});
+ items.forEach(item=>{const li=document.createElement("li");li.textContent=localizedWarning(String(item));list.append(li)});
  const note=document.createElement("p");const strong=document.createElement("strong");strong.textContent=w.remember;note.append(strong,document.createTextNode(" "+w.disclaimer));
  el.replaceChildren(heading,summary,list,note);el.classList.add("show");
 }
