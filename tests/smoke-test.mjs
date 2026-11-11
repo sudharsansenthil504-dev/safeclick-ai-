@@ -3,6 +3,17 @@ import { readFileSync } from "node:fs";
 import vm from "node:vm";
 
 const html = readFileSync(new URL("../index.html", import.meta.url), "utf8");
+
+// Privacy regression guards: checker input must remain in the browser.
+const inlineScripts = [...html.matchAll(/<script\\b[^>]*>([\\s\\S]*?)<\\/script>/gi)].map((match) => match[1]).join("\\n");
+assert.doesNotMatch(html, /<script\\b[^>]*\\bsrc\\s*=/i, "The site should not load third-party scripts");
+assert.doesNotMatch(inlineScripts, /\\bfetch\\s*\\(|XMLHttpRequest|sendBeacon|WebSocket|EventSource/i, "Checker data must not be transmitted through browser network APIs");
+assert.doesNotMatch(inlineScripts, /document\\.cookie|\\beval\\s*\\(|new Function\\s*\\(/, "The site should not use cookies or dynamic code execution");
+const storageWrites = [...inlineScripts.matchAll(/localStorage\\.setItem\\(\\s*["']([^"']+)["']/g)].map((match) => match[1]);
+assert.deepEqual(storageWrites, ["sc-lang"], "Only the language preference may be stored locally");
+for (const anchor of html.matchAll(/<a\\b[^>]*\\btarget="_blank"[^>]*>/gi)) {
+  assert.match(anchor[0], /\\brel="[^"]*noopener[^"]*noreferrer[^"]*"/i, "New-tab links must protect the opener context");
+}
 const scripts = [...html.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/gi)].map((match) => match[1]);
 assert.equal(scripts.length, 3, "Expected the three application scripts");
 
