@@ -108,11 +108,31 @@ for (const code of languageCodes) {
 }
 
 const emergencyKeys = vm.runInContext(
-  '["emergencyTitle","emergencyDesc","emergencyCall","emergencyPortal"].every((key) => Object.hasOwn(extraWords.en, key))',
+  '["emergencyTitle","emergencyText","emergencyCall","emergencyPortal"].every((key) => Object.hasOwn(extraWords.en, key))',
   context,
 );
 assert.equal(emergencyKeys, true, "Emergency help translations should initialize without missing keys");
 
+const requiredTextKeys = [...new Set([...html.matchAll(/data-i18n="([^"]+)"/g)].map((match) => match[1]))];
+const requiredPlaceholderKeys = [...new Set([...html.matchAll(/data-i18n-placeholder="([^"]+)"/g)].map((match) => match[1]))];
+const localizationCoverage = vm.runInContext(`(() => {
+  const codes = ${JSON.stringify(languageCodes)};
+  const textKeys = ${JSON.stringify(requiredTextKeys)};
+  const placeholderKeys = ${JSON.stringify(requiredPlaceholderKeys)};
+  return codes.map((code) => {
+    const words = Object.assign({}, langData[code] || langData.en, uiWords[code] || uiWords.en, extraWords[code] || extraWords.en);
+    return {
+      code,
+      missingText: textKeys.filter((key) => !words[key]),
+      missingPlaceholders: placeholderKeys.filter((key) => !words[key]),
+    };
+  });
+})()`, context);
+for (const coverage of localizationCoverage) {
+  assert.deepEqual(coverage.missingText, [], `${coverage.code} should translate every visible UI label and message`);
+  assert.deepEqual(coverage.missingPlaceholders, [], `${coverage.code} should translate every input placeholder`);
+}
+
 assert.match(html, /@media\s*\(\s*prefers-reduced-motion\s*:\s*reduce\s*\)/, "Reduced-motion preference should disable smooth scrolling");
 
-console.log("SafeClick AI smoke tests passed: script initialization, message/job/link results, Tamil clue, safe text rendering, empty input, 11 languages, Urdu RTL, emergency translations, and reduced-motion accessibility.");
+console.log("SafeClick AI smoke tests passed: script initialization, message/job/link results, Tamil clue, safe text rendering, empty input, 11 languages, complete UI translations, Urdu RTL, emergency translations, and reduced-motion accessibility.");
