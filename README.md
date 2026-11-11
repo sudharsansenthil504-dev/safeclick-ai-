@@ -50,7 +50,7 @@ Open `index.html` in a browser, or serve the repository root with any basic stat
 - [National Cyber Crime Reporting Portal](https://www.cybercrime.gov.in/)
 ## Automated smoke tests
 
-The repository includes a dependency-free browser-flow smoke test that checks script initialization, message/job/link result rendering, a Tamil warning clue, safe text rendering, empty-input handling, complete visible UI and input-placeholder translations across all 11 interface languages, Urdu right-to-left layout, emergency-help translations, and reduced-motion accessibility.
+The repository includes a dependency-free browser-flow smoke test that checks script initialization, message/job/link result rendering, a Tamil warning clue, safe text rendering, empty-input handling, complete visible UI and input-placeholder translations across all 11 interface languages, Urdu right-to-left layout, emergency-help translations, reduced-motion accessibility, and privacy guards against third-party scripts, browser network APIs, cookies, dynamic code execution, unexpected local storage, and unsafe new-tab links.
 
 Run locally with Node.js 20 or newer:
 
