@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#08111f">
+<meta name="description" content="SafeClick AI helps you spot warning signs in suspicious messages, job offers and links.">
+<title>SafeClick AI — Pause. Check. Click safely.</title>
+<style>
+:root{color-scheme:dark;--bg:#08111f;--panel:#101d30;--panel2:#14243a;--line:#263a55;--text:#f3f7ff;--muted:#a8b7cc;--cyan:#56e0d0;--blue:#7aa8ff;--amber:#ffc66d;--red:#ff7e86;--green:#6ce0a3}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 15% 0%,#132c48 0,transparent 42%),var(--bg);color:var(--text);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+a{color:inherit}.wrap{width:min(1080px,92%);margin:auto}.top{padding:20px 0;border-bottom:1px solid #ffffff12}.nav{display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.2px}.logo{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--cyan),var(--blue));display:grid;place-items:center;color:#061321;font-size:21px}.tag{font-size:12px;color:var(--cyan);border:1px solid #56e0d044;border-radius:30px;padding:5px 10px}
+.hero{padding:60px 0 34px;text-align:center}.eyebrow{color:var(--cyan);font-weight:700;font-size:13px;letter-spacing:1.7px;text-transform:uppercase}.hero h1{font-size:clamp(34px,7vw,62px);line-height:1.06;letter-spacing:-1.8px;margin:14px auto;max-width:780px}.hero h1 span{color:var(--cyan)}.hero p{color:var(--muted);max-width:650px;margin:16px auto 24px;font-size:17px}.pillrow{display:flex;justify-content:center;gap:9px;flex-wrap:wrap}.pill{border:1px solid var(--line);background:#ffffff08;color:#d6e2f3;border-radius:30px;padding:7px 12px;font-size:13px}
+.section-title{margin:30px 0 15px;font-size:22px}.tools{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;padding-bottom:32px}.tool{background:linear-gradient(160deg,#15263c,#0e1a2b);border:1px solid var(--line);border-radius:18px;padding:20px;min-width:0}.tool .ico{width:42px;height:42px;border-radius:13px;background:#56e0d01b;display:grid;place-items:center;font-size:21px}.tool h2{font-size:19px;margin:13px 0 5px}.tool p{font-size:14px;color:var(--muted);margin:0 0 16px;min-height:44px}.tool button,.primary{border:0;border-radius:11px;background:var(--cyan);color:#061721;font-weight:800;padding:11px 15px;cursor:pointer}.tool button{width:100%}.tool button:hover,.primary:hover{filter:brightness(1.08)}button:focus-visible,textarea:focus-visible,input:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.checker{display:none;background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:22px;margin:0 0 34px}.checker.active{display:block}.checker-head{display:flex;justify-content:space-between;align-items:center;gap:12px}.checker h2{margin:0;font-size:22px}.close{border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:9px;padding:7px 11px;cursor:pointer}
+label{display:block;font-weight:700;margin:17px 0 7px}textarea,input{width:100%;background:#091525;border:1px solid var(--line);border-radius:12px;color:var(--text);padding:13px;font:inherit}textarea{min-height:140px;resize:vertical}input{min-height:48px}.hint{font-size:13px;color:var(--muted);margin:7px 0 14px}.result{display:none;margin-top:18px;padding:17px;border-radius:14px;border:1px solid var(--line);background:#091525}.result.show{display:block}.result h3{margin:0 0 6px}.result p{margin:6px 0;color:#d4dfef}.result ul{margin:8px 0 0;padding-left:20px;color:#d4dfef}.risk{font-weight:800}.risk.high{color:var(--red)}.risk.medium{color:var(--amber)}.risk.low{color:var(--green)}.notice{background:#17263a;border:1px solid #ffc66d44;border-radius:14px;padding:14px 16px;color:#d9e3f1;font-size:13px;margin:8px 0 36px}.notice strong{color:var(--amber)}footer{border-top:1px solid #ffffff12;padding:24px 0 36px;color:var(--muted);font-size:13px}footer .foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+@media(max-width:760px){.tools{grid-template-columns:1fr}.hero{padding:42px 0 22px}.tool p{min-height:0}.checker{padding:16px}.hero h1{letter-spacing:-1px}.section-title{font-size:20px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap nav"><div class="brand"><div class="logo" aria-hidden="true">✓</div><span>SafeClick AI</span></div><span class="tag">FREE • INDIA-FIRST</span></div></header>
+<main class="wrap">
+<section class="hero"><div class="eyebrow">Pause. Check. Click safely.</div><h1>Not sure it's safe? <span>Check first.</span></h1><p>Check suspicious messages, job offers and website links for common scam warning signs — before you respond, pay or click.</p><div class="pillrow"><span class="pill">🔒 No account needed</span><span class="pill">📱 Mobile friendly</span><span class="pill">🆓 Free checks</span></div></section>
+<h2 class="section-title">Choose what you want to check</h2>
+<section class="tools" aria-label="Safety checkers">
+<article class="tool"><div class="ico">💬</div><h2>Scam Message Checker</h2><p>Look for suspicious wording, urgency, payment requests and impersonation clues.</p><button type="button" data-open="message">Check a message</button></article>
+<article class="tool"><div class="ico">💼</div><h2>Fake Job Checker</h2><p>Review job offers for upfront fees, unrealistic promises and recruitment red flags.</p><button type="button" data-open="job">Check a job offer</button></article>
+<article class="tool"><div class="ico">🔗</div><h2>Suspicious Link Checker</h2><p>Inspect a URL for misleading domains, shorteners and other common warning signs.</p><button type="button" data-open="link">Check a link</button></article>
+</section>
+<section class="checker" id="message"><div class="checker-head"><h2>💬 Scam Message Checker</h2><button class="close" type="button">Close ✕</button></div><label for="messageText">Paste the message</label><textarea id="messageText" placeholder="Paste SMS, WhatsApp, email or social media message here..."></textarea><p class="hint">Remove personal details such as OTPs, account numbers and phone numbers before pasting.</p><button class="primary" id="messageBtn" type="button">Check message</button><div class="result" id="messageResult" aria-live="polite"></div></section>
+<section class="checker" id="job"><div class="checker-head"><h2>💼 Fake Job Checker</h2><button class="close" type="button">Close ✕</button></div><label for="jobText">Paste the job offer or recruiter message</label><textarea id="jobText" placeholder="Paste job description, recruiter message or offer details..."></textarea><p class="hint">Do not include your Aadhaar, PAN, bank details or other private information.</p><button class="primary" id="jobBtn" type="button">Check job offer</button><div class="result" id="jobResult" aria-live="polite"></div></section>
+<section class="checker" id="link"><div class="checker-head"><h2>🔗 Suspicious Link Checker</h2><button class="close" type="button">Close ✕</button></div><label for="linkText">Paste the full website link</label><input id="linkText" type="url" inputmode="url" placeholder="https://example.com/login"><p class="hint">We inspect the text of the URL only. We do not open or visit the website.</p><button class="primary" id="linkBtn" type="button">Check link</button><div class="result" id="linkResult" aria-live="polite"></div></section>
+<div class="notice"><strong>Important:</strong> SafeClick AI is an early warning tool, not a guarantee. A low-risk result does not prove a message, job or link is genuine. Never share OTPs, UPI PINs, passwords or remote-access permissions. When in doubt, verify through the organisation's official website or phone number.</div>
+</main>
+<footer><div class="wrap foot"><span>© 2026 SafeClick AI • Built to help people pause before they click.</span><span>Checks run in your browser. Text is not sent to a server.</span></div></footer>
+<script>
+const patterns=[
+  {re:/\b(otp|one[- ]time password|upi pin|cvv|card pin|password)\b/i,why:"The message asks for sensitive credentials or refers to them."},
+  {re:/\b(pay|payment|transfer|send)\b.{0,45}\b(fee|deposit|charge|tax|verification|registration)\b/i,why:"It may be asking for a payment or fee."},
+  {re:/\b(account|sim|pan|aadhaar|bank)\b.{0,55}\b(block|suspend|expire|close|freeze)\b/i,why:"It uses an account-blocking or suspension warning."},
+  {re:/\b(urgent|immediately|within \d+ minutes|act now|last chance|expires today)\b/i,why:"It creates pressure to act quickly."},
+  {re:/\b(prize|lottery|won|winner|reward|cashback)\b/i,why:"It promises a prize, reward or unexpected benefit."},
+  {re:/\b(verify|update|confirm)\b.{0,45}\b(account|details|kyc|bank|upi)\b/i,why:"It asks you to verify or update account details."},
+  {re:/\b(whatsapp|telegram)\b.{0,50}\b(contact|message|join|call)\b/i,why:"It redirects you to a messaging app for further contact."},
+  {re:/https?:\/\//i,why:"The message contains a link. Check the domain independently before opening it."}
+];
+function renderResult(el,level,items,extra=""){
+ const cls=level==="High"?"high":level==="Medium"?"medium":"low";
+ el.innerHTML='<h3>Warning level: <span class="risk '+cls+'">'+level+'</span></h3><p>'+extra+'</p><ul>'+items.map(x=>'<li>'+x+'</li>').join('')+'</ul><p><strong>Remember:</strong> This is an automated clue check, not proof of fraud or authenticity.</p>';
+ el.classList.add("show");
+}
+function checkText(input,el,jobMode){
+ const text=input.trim();if(!text){alert("Please paste some text first.");return}
+ const found=patterns.filter(p=>p.re.test(text)).map(p=>p.why);
+ if(jobMode){
+  const jobPatterns=[
+   {re:/\b(registration|processing|training|security|interview) fee\b/i,why:"A fee is mentioned in connection with recruitment."},
+   {re:/\b(pay|send|transfer)\b.{0,35}\b(money|fee|deposit|charge)\b/i,why:"The offer appears to request money."},
+   {re:/\b(no interview|without interview|guaranteed job|100% selection|instant joining)\b/i,why:"It promises selection or joining without a normal hiring process."},
+   {re:/\b(earn|salary|income)\b.{0,35}\b(per day|daily|weekly|from home)\b/i,why:"It advertises earnings that should be independently verified."},
+   {re:/\b(whatsapp|telegram)\b/i,why:"Recruitment is routed through a messaging app; verify the recruiter independently."},
+   {re:/\b(no experience required|easy work|part[- ]time)\b/i,why:"Broad, low-barrier job claims need careful verification."}
+  ];
+  jobPatterns.forEach(p=>{if(p.re.test(text))found.push(p.why)});
+ }
+ const unique=[...new Set(found)];
+ const level=unique.length>=3?"High":unique.length>=1?"Medium":"Low";
+ renderResult(el,level,unique.length?unique:["No common warning phrase was detected by this basic check."],level==="Low"?"Few common warning signs were found. Still verify the sender or employer independently.":"Review each warning sign before replying, paying or sharing information.");
+}
+document.querySelectorAll("[data-open]").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll(".checker").forEach(x=>x.classList.remove("active"));const panel=document.getElementById(b.dataset.open);panel.classList.add("active");panel.scrollIntoView({behavior:"smooth",block:"start"})}));
+document.querySelectorAll(".close").forEach(b=>b.addEventListener("click",()=>b.closest(".checker").classList.remove("active")));
+document.getElementById("messageBtn").addEventListener("click",()=>checkText(document.getElementById("messageText").value,document.getElementById("messageResult"),false));
+document.getElementById("jobBtn").addEventListener("click",()=>checkText(document.getElementById("jobText").value,document.getElementById("jobResult"),true));
+document.getElementById("linkBtn").addEventListener("click",()=>{
+ const raw=document.getElementById("linkText").value.trim();const el=document.getElementById("linkResult");if(!raw){alert("Please paste a link first.");return}
+ let u;try{u=new URL(raw)}catch(e){renderResult(el,"High",["This does not look like a complete valid URL. Check that you copied the full link."],"Do not open a link you cannot verify.");return}
+ const flags=[];
+ if(!["http:","https:"].includes(u.protocol))flags.push("The link uses an unusual protocol.");
+ if(u.protocol!=="https:")flags.push("The link does not use HTTPS. This alone does not prove it is malicious.");
+ if(u.username||u.password)flags.push("The URL contains text before the @ symbol that can disguise the real destination.");
+ if(u.hostname.startsWith("xn--")||u.hostname.includes(".xn--"))flags.push("The domain contains internationalised characters that may be used to imitate another domain.");
+ if(/^\d{1,3}(\.\d{1,3}){3}$/.test(u.hostname))flags.push("The destination is a raw IP address rather than a familiar domain name.");
+ if(/bit\.ly|tinyurl\.com|t\.co|goo\.gl|cutt\.ly|is\.gd/i.test(u.hostname))flags.push("This appears to be a shortened link, so the final destination is hidden.");
+ if(u.hostname.split(".").length>4)flags.push("The domain has several subdomain levels. Check the registered domain carefully.");
+ if(u.hostname.length>45)flags.push("The hostname is unusually long.");
+ if(/login|verify|secure|account|update|wallet|bank/i.test(u.hostname))flags.push("The hostname uses words often seen in account or login lures; verify the exact domain.");
+ const level=flags.length>=3?"High":flags.length>=1?"Medium":"Low";
+ renderResult(el,level,flags.length?flags:["No common URL warning pattern was detected. This does not confirm the website is safe."],"Destination shown: "+u.hostname+". The checker has not visited this website.");
+});
+</script>
+</body></html>
