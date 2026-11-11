@@ -46,8 +46,16 @@ const patterns=[
 ];
 function renderResult(el,level,items,extra=""){
  const cls=level==="High"?"high":level==="Medium"?"medium":"low";
- el.innerHTML='<h3>Warning level: <span class="risk '+cls+'">'+level+'</span></h3><p>'+extra+'</p><ul>'+items.map(x=>'<li>'+x+'</li>').join('')+'</ul><p><strong>Remember:</strong> This is an automated clue check, not proof of fraud or authenticity.</p>';
- el.classList.add("show");
+ const w=typeof currentResultWords==="function"?currentResultWords():{level:"Warning level:",high:"High",medium:"Medium",low:"Low",remember:"Remember:",disclaimer:"This is an automated clue check, not proof of fraud or authenticity."};
+ const shown=level==="High"?w.high:level==="Medium"?w.medium:w.low;
+ const heading=document.createElement("h3");
+ heading.append(document.createTextNode(w.level+" "));
+ const risk=document.createElement("span");risk.className="risk "+cls;risk.textContent=shown;heading.append(risk);
+ const summary=document.createElement("p");summary.textContent=extra;
+ const list=document.createElement("ul");
+ items.forEach(item=>{const li=document.createElement("li");li.textContent=String(item);list.append(li)});
+ const note=document.createElement("p");const strong=document.createElement("strong");strong.textContent=w.remember;note.append(strong,document.createTextNode(" "+w.disclaimer));
+ el.replaceChildren(heading,summary,list,note);el.classList.add("show");
 }
 function checkText(input,el,jobMode){
  const text=input.trim();if(!text){alert("Please paste some text first.");return}
@@ -105,7 +113,19 @@ pa:{level:"ਚੇਤਾਵਨੀ ਪੱਧਰ:",high:"ਉੱਚਾ",medium:"ਦ�
 ur:{level:"انتباہ کی سطح:",high:"زیادہ",medium:"درمیانی",low:"کم",remember:"یاد رکھیں:",disclaimer:"یہ صرف خودکار اشاروں کی جانچ ہے؛ دھوکہ دہی یا اصلی ہونے کا ثبوت نہیں۔",few:"عام انتباہی علامات کم ملیں۔ پھر بھی بھیجنے والے یا آجر کی خود تصدیق کریں۔",review:"جواب دینے، ادائیگی کرنے یا معلومات شیئر کرنے سے پہلے ہر انتباہ دیکھیں۔",empty:"اس بنیادی جانچ میں کوئی عام انتباہی عبارت نہیں ملی۔",msg:"براہ کرم پہلے پیغام پیسٹ کریں۔",link:"براہ کرم پہلے لنک پیسٹ کریں۔",invalid:"یہ مکمل درست URL معلوم نہیں ہوتا۔ تصدیق کریں کہ پورا لنک نقل کیا ہے۔",dest:"دکھایا گیا پتہ:",notvisited:"اس جانچ نے ویب سائٹ نہیں کھولی۔"}
 };
 function currentResultWords(){return resultWords[langPick.value]||resultWords.en}
-renderResult=function(el,level,items,extra=""){const w=currentResultWords();const cls=level==="High"?"high":level==="Medium"?"medium":"low";const shown=level==="High"?w.high:level==="Medium"?w.medium:w.low;el.innerHTML='<h3>'+w.level+' <span class="risk '+cls+'">'+shown+'</span></h3><p>'+extra+'</p><ul>'+items.map(x=>'<li>'+x+'</li>').join('')+'</ul><p><strong>'+w.remember+'</strong> '+w.disclaimer+'</p>';el.classList.add("show")};
+renderResult=function renderResult(el,level,items,extra=""){
+ const cls=level==="High"?"high":level==="Medium"?"medium":"low";
+ const w=typeof currentResultWords==="function"?currentResultWords():{level:"Warning level:",high:"High",medium:"Medium",low:"Low",remember:"Remember:",disclaimer:"This is an automated clue check, not proof of fraud or authenticity."};
+ const shown=level==="High"?w.high:level==="Medium"?w.medium:w.low;
+ const heading=document.createElement("h3");
+ heading.append(document.createTextNode(w.level+" "));
+ const risk=document.createElement("span");risk.className="risk "+cls;risk.textContent=shown;heading.append(risk);
+ const summary=document.createElement("p");summary.textContent=extra;
+ const list=document.createElement("ul");
+ items.forEach(item=>{const li=document.createElement("li");li.textContent=String(item);list.append(li)});
+ const note=document.createElement("p");const strong=document.createElement("strong");strong.textContent=w.remember;note.append(strong,document.createTextNode(" "+w.disclaimer));
+ el.replaceChildren(heading,summary,list,note);el.classList.add("show");
+}
 const originalCheckText=checkText;
 checkText=function(input,el,jobMode){const w=currentResultWords();if(!input.trim()){alert(w.msg);return}const before=renderResult;originalCheckText(input,el,jobMode);};
 const originalLinkClick=document.getElementById("linkBtn").onclick;
