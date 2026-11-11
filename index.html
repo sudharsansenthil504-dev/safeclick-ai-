@@ -202,6 +202,7 @@ warningOrder.push(...linkWarningOrder);
 for(const code of Object.keys(linkWarningTranslations)){warningTranslations[code].push(...linkWarningTranslations[code]);}
 function localizedWarning(item){
  const code=langPick.value;
+ if(item==="No common warning phrase was detected by this basic check.")return currentResultWords().empty;
  let at=warningOrder.indexOf(item);
  if(at>=0&&warningTranslations[code])return warningTranslations[code][at];
  at=linkWarningOrder.indexOf(item);
