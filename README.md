@@ -48,3 +48,14 @@ Open `index.html` in a browser, or serve the repository root with any basic stat
 - [TAFCOP — Know Your Mobile Connections](https://tafcop.sancharsaathi.gov.in/telecomUser/)
 - [Sanchar Saathi — Chakshu](https://sancharsaathi.gov.in/sfc/)
 - [National Cyber Crime Reporting Portal](https://www.cybercrime.gov.in/)
+## Automated smoke tests
+
+The repository includes a dependency-free browser-flow smoke test that checks script initialization, message/job/link result rendering, a Tamil warning clue, safe text rendering, empty-input handling, all 11 interface languages, Urdu right-to-left layout, and emergency-help translation initialization.
+
+Run locally with Node.js 20 or newer:
+
+```bash
+node tests/smoke-test.mjs
+```
+
+GitHub Actions runs this test automatically on pushes and pull requests targeting `main`.
