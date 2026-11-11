@@ -113,4 +113,6 @@ const emergencyKeys = vm.runInContext(
 );
 assert.equal(emergencyKeys, true, "Emergency help translations should initialize without missing keys");
 
-console.log("SafeClick AI smoke tests passed: script initialization, message/job/link results, Tamil clue, safe text rendering, empty input, 11 languages, Urdu RTL, and emergency translations.");
+assert.match(html, /@media\\s*\\(\\s*prefers-reduced-motion\\s*:\\s*reduce\\s*\\)/, "Reduced-motion preference should disable smooth scrolling");
+
+console.log("SafeClick AI smoke tests passed: script initialization, message/job/link results, Tamil clue, safe text rendering, empty input, 11 languages, Urdu RTL, emergency translations, and reduced-motion accessibility.");
