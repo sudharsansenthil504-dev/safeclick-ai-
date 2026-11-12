@@ -6,6 +6,11 @@ SafeClick AI is a free, mobile-friendly, browser-based early-warning tool for pe
 
 Live website: https://sudharsansenthil504-dev.github.io/safeclick-ai-/
 
+Project pages:
+- [About SafeClick AI](https://sudharsansenthil504-dev.github.io/safeclick-ai-/about.html)
+- [Contact and feedback](https://sudharsansenthil504-dev.github.io/safeclick-ai-/contact.html)
+- [Privacy Policy](https://sudharsansenthil504-dev.github.io/safeclick-ai-/privacy.html)
+
 ## Current tools
 
 - **Scam Message Checker** — looks for common clues such as requests for OTPs or passwords, payment demands, account-blocking threats, urgency, unexpected rewards and suspicious links.
